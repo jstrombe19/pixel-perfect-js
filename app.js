@@ -5,6 +5,7 @@ const baselinePixels = document.querySelector('#baseline-pixels');
 const calculationExplanation = document.querySelector('#calculation-explanation');
 const consolidatedPixels = document.querySelector('#consolidated-pixels');
 
+// Eventual dynamic allocation of the level of interpolation between lines
 const bandTDIs = {
   0.67: 16,
   0.87: 16,
@@ -69,17 +70,11 @@ function buildBaselineDisplay(arrayOfArrays) {
           baselinePixels.append(newSquare)
         }
         displayBaselinePixels(array, baselinePixels)
-        // for(let i = 0; i < 2; i++) {
-        //   const newSquare = document.createElement('button');
-        //   newSquare.className = 'square';
-        //   baselinePixels.append(newSquare)
-        // }
         break;
       
       default:
         break;
     }
-    // displayBaselinePixels(array, baselinePixels);
   })
 }
 
@@ -95,27 +90,20 @@ function displayBaselinePixels(array, htmlElement) {
   })
 }
 
-// displayBaselinePixels(data1);
-
+// Troubleshooting and validations
 function arrayLengths(arrayOfArrays) {
   arrayOfArrays.forEach(array => {
     console.log(array.length)
   });
 }
 
-// arrayLengths([data1, data2, data3, data4, data5, data6, data7])
-
-
-
 function rollTide(arrayOfArrays) {
   const consolidatedArray = [];
-  console.log(consolidatedArray)
-  console.log(arrayOfArrays[0])
-  for(let n = 3; n < arrayOfArrays[0].length; n++) {
+  for(let n = arrayOfArrays.length - 1; n < arrayOfArrays[0].length; n++) {
     let j = 0;
     let sum = 0;
     for(let i = n; i > -1; i--) {
-      sum += arrayOfArrays[j][i]
+      sum += arrayOfArrays[1][i]
       j++
     }
     consolidatedArray.push(sum)

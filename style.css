@@ -1,3 +1,32 @@
 body {
   color: red;
+  display: flexbox;
+  flex-direction: column;
+}
+
+.square {
+  background: transparent;
+  border: 1px solid transparent;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 48px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 48px;
+}
+
+#baseline-pixels {
+  width: 480px;
+}
+
+#calculation-explanation {
+  width: 480px;
+}
+
+#consolidated-pixels {
+  width: 480px;
 }

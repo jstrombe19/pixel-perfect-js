@@ -97,20 +97,26 @@ function arrayLengths(arrayOfArrays) {
   });
 }
 
-function rollTide(arrayOfArrays) {
+function rollTide(_arrayOfArrays, arraysObject) {
   const consolidatedArray = [];
-  for(let n = arrayOfArrays.length - 1; n < arrayOfArrays[0].length; n++) {
-    let j = 0;
-    let sum = 0;
-    for(let i = n; i > -1; i--) {
-      sum += arrayOfArrays[1][i]
-      j++
-    }
-    consolidatedArray.push(sum)
-    console.log(consolidatedArray)
+  let j = 0;
+  for(let i = 1, p = 3; i < 5; i++, p--) {
+    console.log("i: ", i, "p: ", p)
   }
-  return consolidatedArray;
+
+  // First attempt, failed implementation
+  // for(let n = arrayOfArrays.length - 1; n < arrayOfArrays[0].length; n++) {
+  //   let j = 0;
+  //   let sum = 0;
+  //   for(let i = n; i > -1; i--) {
+  //     sum += arrayOfArrays[1][i]
+  //     j++
+  //   }
+  //   consolidatedArray.push(sum)
+  //   console.log(consolidatedArray)
+  // }
+  // return consolidatedArray;
 }
 
-rollTide([data1, data2, data3, data4]);
+rollTide([data1, data2, data3, data4], {1: data1, 2: data2, 3: data3, 4: data4});
 // displayBaselinePixels(rollTide([data1, data2, data3, data4, data5, data6, data7]), consolidatedPixels);

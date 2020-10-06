@@ -2,7 +2,9 @@ console.log('Bang');
 
 const body = document.querySelector('body');
 const baselinePixels = document.querySelector('#baseline-pixels');
-const calculationExplanation = document.querySelector('#calculation-explanation');
+const calculationExplanation = document.querySelector(
+  '#calculation-explanation'
+);
 const consolidatedPixels = document.querySelector('#consolidated-pixels');
 
 // Eventual dynamic allocation of the level of interpolation between lines
@@ -25,84 +27,96 @@ const data4 = [2, 5, 152, 24, 23, 77, 14, 2, 115, 14];
 // const data6 = [7, 44, 12, 58, 93, 67, 27, 14, 38, 13];
 // const data7 = [1, 35, 124, 98, 73, 14, 72, 47, 18, 24];
 
-
 function buildBaselineDisplay(arrayOfArrays) {
-  arrayOfArrays.forEach(array => {
+  arrayOfArrays.forEach((array) => {
     switch (array) {
       case arrayOfArrays[0]:
-        displayBaselinePixels(array, baselinePixels)
-        for(let i = 0; i < 3; i++) {
+        displayBaselinePixels(array, baselinePixels);
+        for (let i = 0; i < 3; i++) {
           const newSquare = document.createElement('button');
           newSquare.className = 'square';
-          baselinePixels.append(newSquare)
+          baselinePixels.append(newSquare);
         }
         break;
       case arrayOfArrays[1]:
-        for(let i = 0; i < 1; i++) {
+        for (let i = 0; i < 1; i++) {
           const newSquare = document.createElement('button');
           newSquare.className = 'square';
-          baselinePixels.append(newSquare)
+          baselinePixels.append(newSquare);
         }
-        displayBaselinePixels(array, baselinePixels)
-        for(let i = 0; i < 2; i++) {
+        displayBaselinePixels(array, baselinePixels);
+        for (let i = 0; i < 2; i++) {
           const newSquare = document.createElement('button');
           newSquare.className = 'square';
-          baselinePixels.append(newSquare)
+          baselinePixels.append(newSquare);
         }
         break;
       case arrayOfArrays[2]:
-        for(let i = 0; i < 2; i++) {
+        for (let i = 0; i < 2; i++) {
           const newSquare = document.createElement('button');
           newSquare.className = 'square';
-          baselinePixels.append(newSquare)
+          baselinePixels.append(newSquare);
         }
-        displayBaselinePixels(array, baselinePixels)
-        for(let i = 0; i < 1; i++) {
+        displayBaselinePixels(array, baselinePixels);
+        for (let i = 0; i < 1; i++) {
           const newSquare = document.createElement('button');
           newSquare.className = 'square';
-          baselinePixels.append(newSquare)
+          baselinePixels.append(newSquare);
         }
         break;
       case arrayOfArrays[3]:
-        for(let i = 0; i < 3; i++) {
+        for (let i = 0; i < 3; i++) {
           const newSquare = document.createElement('button');
           newSquare.className = 'square';
-          baselinePixels.append(newSquare)
+          baselinePixels.append(newSquare);
         }
-        displayBaselinePixels(array, baselinePixels)
+        displayBaselinePixels(array, baselinePixels);
         break;
-      
+
       default:
         break;
     }
-  })
+  });
 }
 
-buildBaselineDisplay([data1, data2, data3, data4])
+buildBaselineDisplay([data1, data2, data3, data4]);
 
 function displayBaselinePixels(array, htmlElement) {
-  array.forEach(value => {
+  array.forEach((value) => {
     const newSquare = document.createElement('button');
     newSquare.className = 'square';
     // newSquare.style.background = `rgb(${value + 60}, ${value + 60}, ${value + 60})`
-    newSquare.style.background = `rgb(${value + 100}, 0, 0)`
+    newSquare.style.background = `rgb(${value + 100}, 0, 0)`;
     htmlElement.append(newSquare);
-  })
+  });
 }
 
 // Troubleshooting and validations
 function arrayLengths(arrayOfArrays) {
-  arrayOfArrays.forEach(array => {
-    console.log(array.length)
+  arrayOfArrays.forEach((array) => {
+    console.log(array.length);
   });
 }
 
-function rollTide(_arrayOfArrays, arraysObject) {
+function rollTide(arrayOfArrays, arraysObject) {
   const consolidatedArray = [];
-  let j = 0;
-  for(let i = 1, p = 3; i < 5; i++, p--) {
-    console.log("i: ", i, "p: ", p)
+  for (let n = arrayOfArrays.length - 1; n < arrayOfArrays[0].length; n++) {
+    let j = 0;
+    let sum = 0;
+    for (let i = 0, p = n + j; i < 4; i++, p--) {
+      sum += arrayOfArrays[i][p];
+      console.log('sum: ', sum);
+    }
+    consolidatedArray.push(sum);
+    console.log(consolidatedArray);
   }
+
+  for (let i = 0; i < 3; i++) {
+    const newSquare = document.createElement('button');
+    newSquare.className = 'square';
+    consolidatedPixels.append(newSquare);
+  }
+  displayBaselinePixels(consolidatedArray, consolidatedPixels);
 
   // First attempt, failed implementation
   // for(let n = arrayOfArrays.length - 1; n < arrayOfArrays[0].length; n++) {
@@ -118,5 +132,10 @@ function rollTide(_arrayOfArrays, arraysObject) {
   // return consolidatedArray;
 }
 
-rollTide([data1, data2, data3, data4], {1: data1, 2: data2, 3: data3, 4: data4});
+rollTide([data1, data2, data3, data4], {
+  1: data1,
+  2: data2,
+  3: data3,
+  4: data4,
+});
 // displayBaselinePixels(rollTide([data1, data2, data3, data4, data5, data6, data7]), consolidatedPixels);

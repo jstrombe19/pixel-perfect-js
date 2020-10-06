@@ -105,9 +105,11 @@ function rollTide(arrayOfArrays, arraysObject) {
     let sum = 0;
     for (let i = 0, p = n + j; i < 4; i++, p--) {
       sum += arrayOfArrays[i][p];
-      console.log('sum: ', sum);
+      // console.log('sum: ', sum);
     }
-    consolidatedArray.push(sum);
+    consolidatedArray.push(
+      sum / (arrayOfArrays[0].length - (arrayOfArrays.length - 1))
+    );
     console.log(consolidatedArray);
   }
 

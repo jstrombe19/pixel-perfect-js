@@ -17,10 +17,10 @@ const bandTDIs = {
   13.3: 8,
 };
 
-const data1 = [4, 5, 1, 23, 65, 66, 72, 53, 6, 1];
-const data2 = [11, 3, 14, 21, 50, 62, 81, 44, 16, 9];
-const data3 = [7, 14, 22, 95, 101, 15, 25, 88, 10, 2];
-const data4 = [2, 5, 152, 24, 23, 77, 14, 2, 115, 14];
+const data1 = [4, 5, 1, 23, 95, 266, 112, 53, 226, 101];
+const data2 = [11, 3, 14, 71, 190, 162, 81, 244, 116, 9];
+const data3 = [7, 14, 92, 195, 151, 15, 225, 188, 10, 2];
+const data4 = [2, 83, 152, 124, 23, 237, 114, 2, 115, 14];
 
 // Additional sample data - could be used for further demonstration
 // const data5 = [5, 24, 6, 125, 25, 23, 88, 19, 34, 58];
@@ -87,7 +87,7 @@ function displayBaselinePixels(array, htmlElement) {
     newSquare.className = 'square';
     // OPTIONAL GREYSCALE DISPLAY SOLUTION - SWAP 87 FOR 88
     // newSquare.style.background = `rgb(${value + 60}, ${value + 60}, ${value + 60})`
-    newSquare.style.background = `rgb(${value + 100}, 0, 0)`;
+    newSquare.style.background = `rgb(${value /*+ 100*/}, 0, 0)`;
     htmlElement.append(newSquare);
   });
 }
@@ -114,9 +114,7 @@ function rollTide(arrayOfArrays) {
     for (let i = 0, p = n + j; i < 4; i++, p--) {
       sum += arrayOfArrays[i][p];
     }
-    consolidatedArray.push(
-      sum / (arrayOfArrays[0].length - (arrayOfArrays.length - 1))
-    );
+    consolidatedArray.push(sum / arrayOfArrays.length);
   }
 
   for (let i = 0; i < 3; i++) {
@@ -124,6 +122,7 @@ function rollTide(arrayOfArrays) {
     newSquare.className = 'square';
     consolidatedPixels.append(newSquare);
   }
+  console.log(consolidatedArray);
   displayBaselinePixels(consolidatedArray, consolidatedPixels);
 }
 
